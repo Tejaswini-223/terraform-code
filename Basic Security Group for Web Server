@@ -1,7 +1,11 @@
+provider "aws" {
+  region = "ap-south-1"  # Set this to your VPC's actual region
+}
+
 resource "aws_security_group" "web_sg" {
   name        = "web-sg"
   description = "Allow SSH, HTTP, and HTTPS"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = "vpc-04e17691e7238beee"
 
   ingress {
     description = "SSH"
@@ -28,7 +32,6 @@ resource "aws_security_group" "web_sg" {
   }
 
   egress {
-    description = "Allow all outbound traffic"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
